@@ -6,7 +6,9 @@ using UnityEngine;
 public class __Player_Manager 
 {
     public static List<TFTPlayer> Players = new List<TFTPlayer>();
-  
+
+    TFTPlayer ErrorPlayer = new TFTPlayer();
+
     public class TFTPlayer
     {
         public int ID;
@@ -27,28 +29,28 @@ public class __Player_Manager
         Players.Add(player);
     }
 
-    public string ReturnPlayerNameWithID(int ID)
+    public TFTPlayer ReturnPlayerWithID(int ID)
     {
-        string error = "brak gracza";
-
         foreach (TFTPlayer k  in Players){
             if (k.ID ==  ID){
-                return k.League_Name; } 
+                return k; } 
         } 
 
-        return error;
+        return ErrorPlayer;
     }
 
     
     // Start is called before the first frame update
     void Start()
     {
-        
+        ErrorPlayer.ID = 404;
+        ErrorPlayer.Discord_Name = "ErrorPlayerName";
+        ErrorPlayer.League_Name = "ErrorPlayerName";
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+   
     }
 }
